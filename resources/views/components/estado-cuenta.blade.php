@@ -3,8 +3,8 @@
     <div class="row tabla">
         <col-md-12 class="estado"><span class="center">activa</span></col-md-12>
     </div>
+    <h3 class="text-center">Últimos movimientos</h3>
     <div class="row tabla">
-        <h3>Últimos movimientos</h3>
         <col-md-12 class="historial">
             <table class="table">
                 <thead>

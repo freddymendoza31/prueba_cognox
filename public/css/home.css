@@ -138,3 +138,9 @@ tbody{
   }
 
 
+
+.imgtransfer:hover {
+    border: 1px solid #552cb8;
+    cursor: pointer;
+    width: 90%;
+  }

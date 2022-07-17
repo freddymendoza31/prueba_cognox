@@ -1,1 +1,5 @@
-alert('hola')
+
+
+$('#imgtransfer').click(function (){
+    $('#mdlTransaction').modal('show')
+});
