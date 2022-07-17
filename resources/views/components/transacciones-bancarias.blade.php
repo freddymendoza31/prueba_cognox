@@ -4,6 +4,4 @@
      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#mdlTransaction">
         Launch demo modal
       </button>
-
-
 </div>
