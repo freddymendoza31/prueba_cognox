@@ -1,13 +1,12 @@
 @extends('layouts.app')
 @section('title', 'Home')
 @section('content')
-<h2>Bienvenidos a tú Banco amigo</h2>
 <div class="container">
     <div class="row">
-        <div class="col col-6">
+        <div class="col col-6 text-center">
             <x-transacciones-bancarias />
         </div>
-        <div class="col col-6">
+        <div class="col col-6 text-center">
             <x-estado-cuenta/>
         </div>
     </div>
