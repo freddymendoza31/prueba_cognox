@@ -126,18 +126,7 @@ tbody{
     background: #f1f3f5;
   }
 
-  .btn {
-    height: 40px;
-    border-radius: 0;
 
-
-    &:focus,
-    &:active,
-    &:active:focus {
-      box-shadow: none;
-      outline: none;
-    }
-  }
 
   .btn-modal {
     position: absolute;
