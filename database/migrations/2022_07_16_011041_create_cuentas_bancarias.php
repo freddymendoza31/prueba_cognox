@@ -16,11 +16,11 @@ class CreateCuentasBancarias extends Migration
         Schema::create('cuentas_bancarias', function (Blueprint $table) {
             $table->id();
             $table->string('nombre');
-            $table->string('email')->unique();
             $table->bigInteger('cuenta');
             $table->decimal('saldo', 10, 2);
             $table->string('estado');
             $table->foreignId('user_id')->constrained('users')->onUpdate('cascade')->onDelete('cascade');
+            $table->bigInteger('tipo_producto');
             $table->timestamps();
         });
     }

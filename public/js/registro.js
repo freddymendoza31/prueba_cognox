@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    validate()
+
     $('#cedula', this).on('input', function () {
         this.value = this.value.replace(/[^0-9]/g, '');
     });
@@ -10,7 +10,7 @@ $(document).ready(function () {
     $('#password2', this).on('input', function () {
         this.value = this.value.replace(/[^0-9]/g, '');
     });
-    
+    validate()
 });
 
 function validate() {
@@ -21,12 +21,15 @@ function validate() {
 
             password: {
                 required: true,
-                maxlength: 4
+                maxlength: 4,
+                minlength: 4
+
             },
             password2: {
                 required: true,
-                maxlength: 4
-                
+                maxlength: 4,
+                minlength: 4
+
             }
         },
         messages: {
@@ -35,8 +38,78 @@ function validate() {
             password: "Este campo es obligatorio. (requiere 4 digitos )",
         },
         errorElement: 'span',
+
     });
 }
+
+
+$('#registro').submit(function (e) {
+    e.preventDefault();
+    if ($('#password').val() === $('#password2').val()) {
+        let data = [];
+        data = $(this).serializeArray();
+
+        $.ajax({
+            url: '/registro',
+            data: data,
+            type: 'POST',
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            dataType: 'JSON',
+        }).done(function ({ error, msj, url }) {
+            console.log(error)
+            if (!error) {
+                console.log('el error es falso')
+                Command: toastr["success"](msj)
+
+                toastr.options = {
+                    "closeButton": false,
+                    "debug": false,
+                    "newestOnTop": false,
+                    "progressBar": false,
+                    "positionClass": "toast-top-right",
+                    "preventDuplicates": false,
+                    "onclick": null,
+                    "showDuration": "300",
+                    "hideDuration": "1000",
+                    "timeOut": "5000",
+                    "extendedTimeOut": "1000",
+                    "showEasing": "swing",
+                    "hideEasing": "linear",
+                    "showMethod": "fadeIn",
+                    "hideMethod": "fadeOut"
+                }
+                $(location).attr('href', url);
+            } else {
+                console.log('el error es verdadero')
+
+                Command: toastr["error"](msj)
+
+                toastr.options = {
+                    "closeButton": false,
+                    "debug": false,
+                    "newestOnTop": false,
+                    "progressBar": false,
+                    "positionClass": "toast-top-right",
+                    "preventDuplicates": false,
+                    "onclick": null,
+                    "showDuration": "300",
+                    "hideDuration": "1000",
+                    "timeOut": "5000",
+                    "extendedTimeOut": "1000",
+                    "showEasing": "swing",
+                    "hideEasing": "linear",
+                    "showMethod": "fadeIn",
+                    "hideMethod": "fadeOut"
+                }
+            }
+        })
+
+    }
+
+});
+
 $(".login_btn").on("click", notify);
 
 function notify() {
@@ -87,71 +160,8 @@ function notify() {
             "showMethod": "fadeIn",
             "hideMethod": "fadeOut"
         }
+
     }
 
 
 }
-
-$('#registro').submit(function (e) {
-    e.preventDefault();
-   let data = [];
-   data = $(this).serializeArray();
-    $.ajax({
-        url: '/registro',
-        data: data,
-        type: 'POST',
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        },
-        dataType: 'JSON',
-    }) .done(function ({ error, msj, url }) {
-        console.log(error)
-        if (!error) {
-            console.log('el error es falso')
-            Command: toastr["success"](msj)
-
-            toastr.options = {
-                "closeButton": false,
-                "debug": false,
-                "newestOnTop": false,
-                "progressBar": false,
-                "positionClass": "toast-top-right",
-                "preventDuplicates": false,
-                "onclick": null,
-                "showDuration": "300",
-                "hideDuration": "1000",
-                "timeOut": "5000",
-                "extendedTimeOut": "1000",
-                "showEasing": "swing",
-                "hideEasing": "linear",
-                "showMethod": "fadeIn",
-                "hideMethod": "fadeOut"
-            }
-            $(location).attr('href', url);
-        }else{
-            console.log('el error es verdadero')
-
-            Command: toastr["error"](msj)
-
-            toastr.options = {
-                "closeButton": false,
-                "debug": false,
-                "newestOnTop": false,
-                "progressBar": false,
-                "positionClass": "toast-top-right",
-                "preventDuplicates": false,
-                "onclick": null,
-                "showDuration": "300",
-                "hideDuration": "1000",
-                "timeOut": "5000",
-                "extendedTimeOut": "1000",
-                "showEasing": "swing",
-                "hideEasing": "linear",
-                "showMethod": "fadeIn",
-                "hideMethod": "fadeOut"
-            }
-        }
-    })
-        
-
-});

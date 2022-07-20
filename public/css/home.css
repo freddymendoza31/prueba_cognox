@@ -23,6 +23,9 @@ h1 {
     color: #373838;
 }
 
+.hidden{
+    display: none;
+}
 .estado {
     background: green;
     width: 100px;
@@ -44,7 +47,14 @@ h1 {
     width: 540px;
     height: 360px;
 }
-
+.txtblanco{
+    color: #fff !important;
+}
+.btn-success {
+    color: #fff !important;
+    background-color: #008000;
+    border-color: #008000;
+}
 .recaudo {
     color: #2bb516;
 }
