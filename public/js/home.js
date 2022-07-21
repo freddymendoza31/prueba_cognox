@@ -37,7 +37,7 @@ function consultar_productos() {
         data: "data",
         dataType: "json",
     }).done(function (data) {
-console.log(data);
+
         let select = '';
 
         for (var i = 0; i < data.length; i++) {
@@ -69,7 +69,7 @@ function consultar_consultCuentasBancarias(data) {
         dataType: "json",
     }).done(function ({ data }) {
         let select = '';
-       // console.log(data)
+
         for (var i = 0; i < data.length; i++) {
             $('#id_destino').val(data[i].id)
 
@@ -101,7 +101,7 @@ function consultar_transacciones() {
         data: "data",
         dataType: "json",
     }).done(function (data) {
-console.log(data);
+
         let table = '';
 
 
@@ -175,8 +175,10 @@ $('#transferir').submit(function (e) {
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 },
-            }).done(function ({ error, msj }) {
+            }).done(function ({ error, msj, saldo }) {
+
                 if (!error) {
+                    $('#saldo').html('Saldo $' + saldo.saldo)
                     Command: toastr["success"](msj)
 
                     toastr.options = {
