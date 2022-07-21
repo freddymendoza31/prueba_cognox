@@ -1,7 +1,6 @@
 $(document).ready(function () {
     consultcuentaOrigen()
     consultar_transacciones()
-    consultar_consultCuentasBancarias()
     consultar_productos()
 
 });
@@ -38,7 +37,7 @@ function consultar_productos() {
         data: "data",
         dataType: "json",
     }).done(function (data) {
-
+console.log(data);
         let select = '';
 
         for (var i = 0; i < data.length; i++) {
@@ -47,7 +46,7 @@ function consultar_productos() {
 
         $('#producto').html(select)
         $('#insProducto').html(select)
-
+        consultar_consultCuentasBancarias(1)
     }).fail(function () {
         console.log('error');
     });
@@ -68,12 +67,23 @@ function consultar_consultCuentasBancarias(data) {
         url: "/consultCuentas",
         data: ({ 'id': data }),
         dataType: "json",
-    }).done(function ({data}) {
-        console.log(data)
+    }).done(function ({ data }) {
         let select = '';
+       // console.log(data)
         for (var i = 0; i < data.length; i++) {
             $('#id_destino').val(data[i].id)
-            select += '<option value="' + data[i].cuenta + '">' + data[i].cuenta + ' </option>';
+
+            if (data[i].tipo_producto == 2) {
+                if (data[i].cuenta) {
+                    select += '<option value="' + data[i].cuenta + '">' + data[i].cuenta + ' </option>';
+                }
+            }
+            if (data[i].cuenta_destino) {
+                if (data[i].id_usuario_destino == 2) {
+                    select += '<option value="' + data[i].cuenta_destino + '">' + data[i].cuenta_destino + ' </option>';
+                }
+
+            }
         }
         $('#cuenta_destino').html(select)
     }).fail(function () {
@@ -91,7 +101,7 @@ function consultar_transacciones() {
         data: "data",
         dataType: "json",
     }).done(function (data) {
-
+console.log(data);
         let table = '';
 
 
@@ -165,7 +175,7 @@ $('#transferir').submit(function (e) {
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 },
-            }).done(function ({ error, msj, url }) {
+            }).done(function ({ error, msj }) {
                 if (!error) {
                     Command: toastr["success"](msj)
 
@@ -309,8 +319,9 @@ $('#frmInscribirCta').submit(function (e) {
                     "showMethod": "fadeIn",
                     "hideMethod": "fadeOut"
                 }
-                $('#mdlInscribirCuenta').modal('hide')
+
                 $("#frmInscribirCta")[0].reset();
+                $('.btn').click()
             } else {
                 Command: toastr["error"](msj)
 

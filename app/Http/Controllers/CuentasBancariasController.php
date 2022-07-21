@@ -15,19 +15,14 @@ class CuentasBancariasController extends Controller
     public function consultCuentas(Request $request)
     {
         $result = User::find(Auth::user()->id);
-        
+
         if ($request->id == 2) {
             // terceros
-
             $data['data'] = $result->registradas;
-
         } elseif ($request->id == 1) {
             // propias
-
             $data['data'] = $result->misCuentas;
-
         }
-
         echo json_encode($data);
     }
 
@@ -49,17 +44,31 @@ class CuentasBancariasController extends Controller
 
         $result->save();
         $resultDestino->save();
-        return($result);
+        return ($result);
     }
 
-    public static function crearCuentabc($request){
-                $insert = new CuentasBancariasModel();
-                $insert->nombre  = $request->input('nombreEntidad');
-                $insert->cuenta  = $request->input('nuemeroCuenta');
-                $insert->saldo   = 0;
-                $insert->estado  = 1;
-                $insert->user_id  = Auth()->id();
-                $insert->tipo_producto = $request->input('insProducto');
-                $insert->save();
+    public static function crearCuentabc($request)
+    {
+        $result = CuentasBancariasModel::where("user_id", Auth()->id())->get();
+
+        if (empty($result)) {
+            $insert = new CuentasBancariasModel();
+            $insert->nombre  = $request->input('nombreEntidad');
+            $insert->cuenta  = $request->input('nuemeroCuenta');
+            $insert->saldo   = 0;
+            $insert->estado  = 1;
+            $insert->user_id  = Auth()->id();
+            $insert->tipo_producto = 1;
+            $insert->save();
+        }else{
+            $insert = new CuentasBancariasModel();
+            $insert->nombre  = $request->input('nombreEntidad');
+            $insert->cuenta  = $request->input('nuemeroCuenta');
+            $insert->saldo   = 0;
+            $insert->estado  = 1;
+            $insert->user_id  = Auth()->id();
+            $insert->tipo_producto = 2;
+            $insert->save();
+        }
     }
 }

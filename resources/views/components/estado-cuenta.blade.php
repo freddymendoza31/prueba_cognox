@@ -15,21 +15,7 @@
                         <th>Monto</th>
                     </tr>
                 </thead>
-                <tbody>
-                    {{-- <tr>
-                        <td scope="row">24/05/22</td>
-                        <td class="letra">TRANSFERENCIA A NEQUI</td>
-                        <td class="letra">TRANSFERENCIA A NEQUI</td>
-                        <td class="enviado">- 100.000</td>
-
-                    </tr>
-                    <tr>
-                        <td scope="row">24/05/22</td>
-                        <td class="letra">TRANSFERENCIA CTA BANCA MOVIL</td>
-                        <td class="letra">TRANSFERENCIA CTA BANCA MOVIL</td>
-                        <td class="recaudo">+ 200.000</td>
-                    </tr> --}}
-                </tbody>
+                <tbody></tbody>
             </table>
         </col-md-12>
     </div>
