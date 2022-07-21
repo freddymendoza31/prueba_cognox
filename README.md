@@ -13,6 +13,12 @@
 # Abrir el archivo .env y en la linea 14 verifique que la base de datos se llame; DB_DATABASE=cognoxapp
 # Despues ejecutar el siguiente comando en la consola: php artisan migrate
 # Luego ejecutar el siguiente la siguiente linea; php artisan key:generate
+# ejecutar la sentencia sql:
+
+INSERT INTO `producto` (`id`, `tipo_producto`, `created_at`, `updated_at`) VALUES
+(1, 'Cuentas Propias', '2022-07-20 04:20:41', '2022-07-20 04:20:41'),
+(2, 'Cuentas de Terceros', '2022-07-20 16:36:31', '2022-07-20 16:36:31');
+
 # finamente ejecutar php artisan serve
 # La url que le aparece en la consola de comando copiela y peguela en su navegador o presione las teclas Ctrl + Click sobre el link generado.
 # Por ultimo ejecute el comando; php artisan optimize
