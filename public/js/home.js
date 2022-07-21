@@ -84,6 +84,16 @@ function consultar_consultCuentasBancarias(data) {
                 }
 
             }
+            if(data[i].id_usuario_origen){
+                if(data[i].tipo_producto == 2){
+                    select += '<option value="' + data[i].cuenta_destino + '">' + data[i].cuenta_destino + ' </option>';
+                }
+                if(data[i].id_usuario_destino){
+                    select += '<option value="' + data[i].cuenta_destino + '">' + data[i].cuenta_destino + ' </option>';
+
+                }
+            }
+            
         }
         $('#cuenta_destino').html(select)
     }).fail(function () {
@@ -278,14 +288,22 @@ function consultar_usuariosTerceros() {
         let select = '';
         for (var i = 0; i < data.length; i++) {
 
-            select += '<option value="' + data[i].id + '">' + data[i].name + ' </option>';
-            $('#nuemeroCuenta').val(data[i].cuenta)
+            select += '<option value="' + data[i].id + '" data-cuenta="' + data[i].cuenta + '">' + data[i].name + '-' + data[i].cuenta +' </option>';
+
         }
+        $('#nuemeroCuenta').val($(this).find(':selected').data('cuenta'))
         $('#insUser').html(select)
     }).fail(function () {
         console.log('error');
     });
 }
+
+
+$('#insUser').change(function (e) {
+    e.preventDefault();
+    let data = $(this).find(':selected').data('cuenta') ;
+    $('#nuemeroCuenta').val(data)
+});
 
 $('#frmInscribirCta').submit(function (e) {
     e.preventDefault();
