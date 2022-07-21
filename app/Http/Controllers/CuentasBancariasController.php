@@ -55,7 +55,7 @@ class CuentasBancariasController extends Controller
             $insert = new CuentasBancariasModel();
             $insert->nombre  = $request->input('nombreEntidad');
             $insert->cuenta  = $request->input('nuemeroCuenta');
-            $insert->saldo   = 0;
+            $insert->saldo   = 500000;
             $insert->estado  = 1;
             $insert->user_id  = Auth()->id();
             $insert->tipo_producto = 1;
