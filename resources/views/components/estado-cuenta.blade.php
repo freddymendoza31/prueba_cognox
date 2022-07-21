@@ -16,7 +16,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
+                    {{-- <tr>
                         <td scope="row">24/05/22</td>
                         <td class="letra">TRANSFERENCIA A NEQUI</td>
                         <td class="letra">TRANSFERENCIA A NEQUI</td>
@@ -28,7 +28,7 @@
                         <td class="letra">TRANSFERENCIA CTA BANCA MOVIL</td>
                         <td class="letra">TRANSFERENCIA CTA BANCA MOVIL</td>
                         <td class="recaudo">+ 200.000</td>
-                    </tr>
+                    </tr> --}}
                 </tbody>
             </table>
         </col-md-12>

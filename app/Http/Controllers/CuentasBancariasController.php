@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\CuentasBancariasModel;
+use App\Models\User;
+use App\Http\Controllers\AgregarCtaBancariasController;
 use Illuminate\Support\Facades\Auth;
 
 use LDAP\Result;
@@ -12,14 +14,21 @@ class CuentasBancariasController extends Controller
 {
     public function consultCuentas(Request $request)
     {
-        if ($request->id == 1) {
-            $result = CuentasBancariasModel::where("tipo_producto", "=", $request->id)
-                ->where('nombre', 'like', '%Ahorro a la mano%')->get();
-        } else {
-            $result = CuentasBancariasModel::where("tipo_producto", "=", $request->id)->get();
+        $result = User::find(Auth::user()->id);
+        
+        if ($request->id == 2) {
+            // terceros
+
+            $data['data'] = $result->registradas;
+
+        } elseif ($request->id == 1) {
+            // propias
+
+            $data['data'] = $result->misCuentas;
+
         }
 
-        echo json_encode($result);
+        echo json_encode($data);
     }
 
     public function cuentaOrigen()

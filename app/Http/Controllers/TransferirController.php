@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\TransferirModel;
 use App\Http\Controllers\CuentasBancariasController;
+use Illuminate\Support\Facades\Auth;
 use LDAP\Result;
 
 class TransferirController extends Controller
@@ -33,9 +34,9 @@ class TransferirController extends Controller
         echo json_encode($result);
     }
 
-    public function init()
+    public function movimientosBco()
     {
-        $result['data'] =  TransferirModel::all();
+        $result = TransferirModel::where('user_id', Auth()->id())->get();
         echo json_encode($result);
     }
 }

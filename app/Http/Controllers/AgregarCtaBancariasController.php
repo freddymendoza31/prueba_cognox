@@ -28,7 +28,7 @@ class AgregarCtaBancariasController extends Controller
                 $result['msj'] = 'Esta cuenta se  encuentra registrada en listas de terceros';
             }
         } elseif ($request->input('insProducto') == 1) {
-          
+
             if (empty($validar)) {
                 CuentasBancariasController::crearCuentabc($request);
                 $insert = new AgregarCtaBancariasModel();
@@ -45,5 +45,9 @@ class AgregarCtaBancariasController extends Controller
             }
         }
         echo json_encode($result);
+    }
+
+    public function cuentasTerceros(){
+
     }
 }

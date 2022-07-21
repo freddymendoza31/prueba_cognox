@@ -34,10 +34,11 @@ Route::get('/alluser', [LoginController::class, 'allUser']);
 Route::post('/login', [LoginController::class, 'loginsession'])->name('loginsession.index');
 Route::get('/logout', [LoginController::class, 'destroy'])->name('destroy.index');
 Route::post('/transferir', [TransferirController::class, 'transferir'])->name('transferir.index');
-Route::get('/init', [TransferirController::class, 'init']);
+Route::get('/movimientosBco', [TransferirController::class, 'movimientosBco']);
 Route::get('/consultProductos', [productoController::class, 'consultProductos']);
 Route::post('/consultCuentas', [CuentasBancariasController::class, 'consultCuentas']);
 Route::get('/cuentaOrigen', [CuentasBancariasController::class, 'cuentaOrigen']);
 Route::post('/InscribirCta', [AgregarCtaBancariasController::class, 'createCtaBancarias']);
+
 
 
