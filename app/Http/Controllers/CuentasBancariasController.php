@@ -18,10 +18,10 @@ class CuentasBancariasController extends Controller
 
         if ($request->id == 2) {
             // terceros
-            $data['data'] = $result->registradas;
+            $data['terceros'] = $result->registradas;
         } elseif ($request->id == 1) {
             // propias
-            $data['data'] = $result->misCuentas;
+            $data['propias'] = $result->misCuentas;
         }
         echo json_encode($data);
     }
@@ -36,6 +36,7 @@ class CuentasBancariasController extends Controller
 
     public static function resta($valor, $Cuenta_destino, $cuenta_origen)
     {
+        
         $resultDestino = CuentasBancariasModel::where('cuenta', '=', $Cuenta_destino)->first();
         $result = CuentasBancariasModel::where('cuenta', '=', $cuenta_origen)->first();
 

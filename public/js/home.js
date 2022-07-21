@@ -67,39 +67,40 @@ function consultar_consultCuentasBancarias(data) {
         url: "/consultCuentas",
         data: ({ 'id': data }),
         dataType: "json",
-    }).done(function ({ data }) {
+    }).done(function (data) {
         let select = '';
 
-        for (var i = 0; i < data.length; i++) {
-            $('#id_destino').val(data[i].id)
-
-            if (data[i].tipo_producto == 2) {
-                if (data[i].cuenta) {
-                    select += '<option value="' + data[i].cuenta + '">' + data[i].cuenta + ' </option>';
+        if (data.propias) {
+            for (var i = 0; i < data.propias.length; i++) {
+                if (data.propias[i].tipo_producto == 2) {
+                    select += '<option value="' + data.propias[i].cuenta + '">' + data.propias[i].cuenta + ' </option>';
                 }
             }
-            if (data[i].cuenta_destino) {
-                if (data[i].id_usuario_destino == 2) {
-                    select += '<option value="' + data[i].cuenta_destino + '">' + data[i].cuenta_destino + ' </option>';
-                }
-
-            }
-            if(data[i].id_usuario_origen){
-                if(data[i].tipo_producto == 2){
-                    select += '<option value="' + data[i].cuenta_destino + '">' + data[i].cuenta_destino + ' </option>';
-                }
-                if(data[i].id_usuario_destino){
-                    select += '<option value="' + data[i].cuenta_destino + '">' + data[i].cuenta_destino + ' </option>';
-
-                }
-            }
-            
         }
+
+        if (data.terceros) {
+            select += '<option value="" > Seleccionar Cuenta Destino  </option>';
+            for (var i = 0; i < data.terceros.length; i++) {
+
+                if (data.terceros[i].id_usuario_origen !== data.terceros[i].id_usuario_destino) {
+                    select += '<option value="' + data.terceros[i].cuenta_destino + '" data-id="' + data.terceros[i].id_usuario_destino  + '">' + data.terceros[i].cuenta_destino + ' </option>';
+                }
+            }
+        }
+
+
         $('#cuenta_destino').html(select)
     }).fail(function () {
         console.log('error');
     });
 }
+
+$('#cuenta_destino').change(function (e) {
+    e.preventDefault();
+    let data = $(this).find(':selected').data('id');
+    console.log(data)
+    $('#id_destino').val(data)
+});
 
 
 //-------------Movimientos------------//
@@ -288,7 +289,7 @@ function consultar_usuariosTerceros() {
         let select = '';
         for (var i = 0; i < data.length; i++) {
 
-            select += '<option value="' + data[i].id + '" data-cuenta="' + data[i].cuenta + '">' + data[i].name + '-' + data[i].cuenta +' </option>';
+            select += '<option value="' + data[i].id + '" data-cuenta="' + data[i].cuenta + '">' + data[i].name + '-' + data[i].cuenta + ' </option>';
 
         }
         $('#nuemeroCuenta').val($(this).find(':selected').data('cuenta'))
@@ -301,7 +302,7 @@ function consultar_usuariosTerceros() {
 
 $('#insUser').change(function (e) {
     e.preventDefault();
-    let data = $(this).find(':selected').data('cuenta') ;
+    let data = $(this).find(':selected').data('cuenta');
     $('#nuemeroCuenta').val(data)
 });
 
