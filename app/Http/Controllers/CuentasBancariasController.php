@@ -29,8 +29,9 @@ class CuentasBancariasController extends Controller
     public function cuentaOrigen()
     {
 
-        $result = CuentasBancariasModel::where('user_id', '=', auth()->id())
-            ->where('tipo_producto', '=', 1)->first();
+        $result = CuentasBancariasModel::where([
+                "user_id"=> auth()->id(),
+                "tipo_producto"=> 1]) ->first();
         echo json_encode($result);
     }
 
