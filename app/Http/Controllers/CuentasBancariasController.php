@@ -17,11 +17,9 @@ class CuentasBancariasController extends Controller
         $result = User::find(Auth::user()->id);
 
         if ($request->id == 2) {
-            // terceros
-            $data['terceros'] = $result->registradas;
+            $data['terceros'] = $result->registradas;// terceros
         } elseif ($request->id == 1) {
-            // propias
-            $data['propias'] = $result->misCuentas;
+            $data['propias'] = $result->misCuentas; // propias
         }
         echo json_encode($data);
     }

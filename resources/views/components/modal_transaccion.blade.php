@@ -18,7 +18,7 @@
                                 <div class="col-md-6">
                                     <span for="origen">Cuenta de origen</span>
                                     <select class="form-control" id="cuenta_origen" name="cuenta_origen" aria-label="Default select example">
-                                        <option value="1">123456789666</option>
+                                        <option value="1"></option>
                                     </select>
                                 </div>
                                 <div class="col-md-6">

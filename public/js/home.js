@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    //consultcuentaOrigen()
+    consultcuentaOrigen()
     consultar_transacciones()
     consultar_productos()
 
@@ -7,14 +7,13 @@ $(document).ready(function () {
 
 let saldo;
 
-function consultcuentaOrigen(data) {
+function consultcuentaOrigen() {
     $.ajax({
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         },
         type: "get",
         url: "/cuentaOrigen",
-        data: ({ 'id': data }),
         dataType: "json",
     }).done(function (data) {
         saldo = data.saldo;
