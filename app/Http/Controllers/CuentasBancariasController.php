@@ -38,18 +38,16 @@ class CuentasBancariasController extends Controller
 
         $resultDestino = CuentasBancariasModel::where('cuenta', '=', $Cuenta_destino)->first();
         $result = CuentasBancariasModel::where('cuenta', '=', $cuenta_origen)->first();
-        $suma = $valor;
-
+    
         $resta = $result->saldo - $valor;
-        $suma += $resultDestino->saldo;
-
+        $resultDestino->saldo += $valor ;
 
         $result->saldo = $resta;
-        $resultDestino->saldo = $suma;
+
 
         $result->save();
         $resultDestino->save();
-       
+
     }
 
     public static function crearCuentabc(Request $request)
