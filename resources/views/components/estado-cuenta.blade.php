@@ -1,4 +1,5 @@
 <div>
+    <span class="btn btn-danger"><i class="fas fa-user"></i> {{ucfirst(Session::get('sessionName')) }}</span>
     <h2 class="text-center"><i class="fas fa-circle iconfm"></i> Estado de la Cuenta</h2>
     <div class="row tabla">
         <col-md-12 class="estado"><span class="center">activa</span></col-md-12>

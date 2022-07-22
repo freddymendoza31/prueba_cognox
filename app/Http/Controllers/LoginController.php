@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Session;
 use App\Models\LoginModel;
 use Illuminate\Http\Request;
 use App\Models\User;
@@ -36,6 +37,7 @@ class LoginController extends Controller
         }
 
         echo json_encode($result);
+        LoginController::usuario();
 
     }
 
@@ -51,5 +53,10 @@ class LoginController extends Controller
        ->where('users.id', '<>', Auth()->id())->get();
 
        echo json_encode($user);
+    }
+
+    public function usuario(){
+        $user = LoginModel::where('id',Auth()->id())->first();
+        Session::put(['sessionName' =>  $user->name]);
     }
 }

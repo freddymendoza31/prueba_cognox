@@ -126,3 +126,9 @@ tbody {
 .form-control {
     height: 34px !important;
 }
+
+/* nombre de usuario */
+
+span.btn-danger {
+    background-color: #552cb8;
+}
