@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    consultcuentaOrigen()
+    //consultcuentaOrigen()
     consultar_transacciones()
     consultar_productos()
 
