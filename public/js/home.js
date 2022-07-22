@@ -68,9 +68,10 @@ function consultar_consultCuentasBancarias(data) {
         let select = '';
 
         if (data.propias) {
+            select += '<option value="" > Seleccionar Cuenta Propias  </option>';
             for (var i = 0; i < data.propias.length; i++) {
                 if (data.propias[i].tipo_producto == 2) {
-                    select += '<option value="' + data.propias[i].cuenta + '">' + data.propias[i].cuenta + ' </option>';
+                    select += '<option value="' + data.propias[i].cuenta + '" data-id="' + data.propias[i].id + '">' + data.propias[i].cuenta + ' </option>';
                 }
             }
         }
@@ -78,7 +79,6 @@ function consultar_consultCuentasBancarias(data) {
         if (data.terceros) {
             select += '<option value="" > Seleccionar Cuenta Destino  </option>';
             for (var i = 0; i < data.terceros.length; i++) {
-
                 if (data.terceros[i].id_usuario_origen !== data.terceros[i].id_usuario_destino) {
                     select += '<option value="' + data.terceros[i].cuenta_destino + '" data-id="' + data.terceros[i].id_usuario_destino + '">' + data.terceros[i].cuenta_destino + ' </option>';
                 }
