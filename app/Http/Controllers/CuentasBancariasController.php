@@ -38,7 +38,7 @@ class CuentasBancariasController extends Controller
 
         $resultDestino = CuentasBancariasModel::where('cuenta', '=', $Cuenta_destino)->first();
         $result = CuentasBancariasModel::where('cuenta', '=', $cuenta_origen)->first();
-    die($resultDestino);
+    die($Cuenta_destino);
         $resta = $result->saldo - $valor;
         $resultDestino->saldo += $valor ;
 
