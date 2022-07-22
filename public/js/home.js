@@ -186,7 +186,7 @@ $('#transferir').submit(function (e) {
             }).done(function ({ error, msj, saldo }) {
 
                 if (!error) {
-                    $('#saldo').html('Saldo $' + saldo.saldo)
+                    $('#saldo').html('Saldo $' + saldo)
                     Command: toastr["success"](msj)
 
                     toastr.options = {
