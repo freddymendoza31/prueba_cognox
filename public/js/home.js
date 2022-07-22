@@ -186,7 +186,7 @@ $('#transferir').submit(function (e) {
             }).done(function ({ error, msj, saldo }) {
 
                 if (!error) {
-                    $('#saldo').html('Saldo $' + saldo)
+                    consultcuentaOrigen()
                     Command: toastr["success"](msj)
 
                     toastr.options = {
