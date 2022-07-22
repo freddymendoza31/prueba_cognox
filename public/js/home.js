@@ -17,7 +17,7 @@ function consultcuentaOrigen(data) {
         data: ({ 'id': data }),
         dataType: "json",
     }).done(function (data) {
-        saldo = data.saldo
+        saldo = data.saldo;
         let select = '';
         $('#saldo').html('Saldo $' + data.saldo)
         select += '<option value="' + data.cuenta + '">' + data.cuenta + ' </option>';
