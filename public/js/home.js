@@ -316,7 +316,9 @@ $('#frmInscribirCta').submit(function (e) {
         data: data,
         dataType: "json",
         success: function ({ error, msj }) {
-
+            consultcuentaOrigen()
+            consultar_transacciones()
+            consultar_productos()
             if (!error) {
                 Command: toastr["success"](msj)
 
