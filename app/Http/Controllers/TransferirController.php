@@ -12,6 +12,7 @@ class TransferirController extends Controller
 {
     public function transferir(Request $request)
     {
+        die($request->input('id_destino'));
         $insert = new TransferirModel();
         $insert->cuenta_origen = $request->input('cuenta_origen');
         $insert->cuenta_destino = $request->input('cuenta_destino');
