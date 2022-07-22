@@ -12,7 +12,7 @@ class TransferirController extends Controller
 {
     public function transferir(Request $request)
     {
-        $insert = new transferirModel();
+        $insert = new TransferirModel();
         $insert->cuenta_origen = $request->input('cuenta_origen');
         $insert->cuenta_destino = $request->input('cuenta_destino');
         $insert->saldo = $request->input('valor');
@@ -21,7 +21,7 @@ class TransferirController extends Controller
         $insert->save();
 
         if ($insert) {
-            $result['saldo'] = cuentasBancariasController::resta($request->input('valor'), $request->input('cuenta_destino'), $request->input('cuenta_origen'));
+            $result['saldo'] = CuentasBancariasController::resta($request->input('valor'), $request->input('cuenta_destino'), $request->input('cuenta_origen'));
             $result['error'] = false;
             $result['msj'] = 'Transferencia Exitosa...';
         } else {
