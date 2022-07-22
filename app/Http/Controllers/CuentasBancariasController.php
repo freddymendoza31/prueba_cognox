@@ -48,7 +48,7 @@ class CuentasBancariasController extends Controller
         return ($result);
     }
 
-    public static function crearCuentabc($request)
+    public static function crearCuentabc(Request $request)
     {
         $result = CuentasBancariasModel::where("user_id", Auth()->id())->first();
 
