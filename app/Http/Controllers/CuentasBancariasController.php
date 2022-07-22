@@ -40,7 +40,8 @@ class CuentasBancariasController extends Controller
         $result = CuentasBancariasModel::where('cuenta', '=', $cuenta_origen)->first();
 
         $resta = $result->saldo - $valor;
-        $suma =  $resultDestino->saldo - $valor;
+        $resp =  $resultDestino->saldo;
+        $suma =  ($resp + $valor);
 
         $result->saldo   = $resta;
         $resultDestino->saldo = $suma;
