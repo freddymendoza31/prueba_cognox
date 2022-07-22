@@ -3,8 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
-use App\Http\Controllers\transferirController;
-use App\Http\Controllers\productoController;
+use App\Http\Controllers\TransferirController;
+use App\Http\Controllers\ProductoController;
 use App\Http\Controllers\CuentasBancariasController;
 use App\Http\Controllers\AgregarCtaBancariasController;
 

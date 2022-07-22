@@ -29,14 +29,14 @@ class CuentasBancariasController extends Controller
     public function cuentaOrigen()
     {
 
-        $result = CuentasBancariasModel::where('nombre', 'like', '%bancolombia%')
-            ->where('user_id', '=', auth()->id())->get();
+        $result = CuentasBancariasModel::where('user_id', '=', auth()->id())
+            ->where('tipo_producto', '=', 1)->first();
         echo json_encode($result);
     }
 
     public static function resta($valor, $Cuenta_destino, $cuenta_origen)
     {
-        
+
         $resultDestino = CuentasBancariasModel::where('cuenta', '=', $Cuenta_destino)->first();
         $result = CuentasBancariasModel::where('cuenta', '=', $cuenta_origen)->first();
 
@@ -50,7 +50,7 @@ class CuentasBancariasController extends Controller
 
     public static function crearCuentabc($request)
     {
-        $result = CuentasBancariasModel::where("user_id", Auth()->id())->get();
+        $result = CuentasBancariasModel::where("user_id", Auth()->id())->first();
 
         if (empty($result)) {
             $insert = new CuentasBancariasModel();

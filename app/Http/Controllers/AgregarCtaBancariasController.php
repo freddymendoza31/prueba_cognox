@@ -11,7 +11,9 @@ class AgregarCtaBancariasController extends Controller
 {
     public function  createCtaBancarias(Request $request)
     {
-        $validar = AgregarCtaBancariasModel::where("cuenta_destino", "=", $request->input('nuemeroCuenta'), "AND", "id_usuario_origen ", "=", Auth()->id())->first();
+        $validar = AgregarCtaBancariasModel::where([
+            "cuenta_destino"=> $request->input('nuemeroCuenta'),
+            "id_usuario_origen"=> Auth()->id()]) ->first();
 
         if ($request->input('insProducto') == 2) {
             if (empty($validar)) {
@@ -28,7 +30,7 @@ class AgregarCtaBancariasController extends Controller
                 $result['msj'] = 'Esta cuenta se  encuentra registrada en listas de terceros';
             }
         } elseif ($request->input('insProducto') == 1) {
-      
+
             if (empty($validar)) {
                 CuentasBancariasController::crearCuentabc($request);
                 $insert = new AgregarCtaBancariasModel();

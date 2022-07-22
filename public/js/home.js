@@ -17,13 +17,11 @@ function consultcuentaOrigen(data) {
         data: ({ 'id': data }),
         dataType: "json",
     }).done(function (data) {
-
+        saldo = data.saldo
         let select = '';
-        for (var i = 0; i < data.length; i++) {
-            saldo = data[i].saldo;
-            $('#saldo').html('Saldo $' + data[i].saldo)
-            select += '<option value="' + data[i].cuenta + '">' + data[i].cuenta + ' </option>';
-        }
+        $('#saldo').html('Saldo $' + data.saldo)
+        select += '<option value="' + data.cuenta + '">' + data.cuenta + ' </option>';
+
         $('#cuenta_origen').html(select)
     }).fail(function () {
         console.log('error');
@@ -83,7 +81,7 @@ function consultar_consultCuentasBancarias(data) {
             for (var i = 0; i < data.terceros.length; i++) {
 
                 if (data.terceros[i].id_usuario_origen !== data.terceros[i].id_usuario_destino) {
-                    select += '<option value="' + data.terceros[i].cuenta_destino + '" data-id="' + data.terceros[i].id_usuario_destino  + '">' + data.terceros[i].cuenta_destino + ' </option>';
+                    select += '<option value="' + data.terceros[i].cuenta_destino + '" data-id="' + data.terceros[i].id_usuario_destino + '">' + data.terceros[i].cuenta_destino + ' </option>';
                 }
             }
         }

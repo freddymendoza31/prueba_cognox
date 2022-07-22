@@ -23,14 +23,14 @@
                                 </div>
                                 <div class="col-md-6">
                                     <span for="origen">Productos Inscritos</span>
-                                    <select class="form-control" id="producto" name="producto" aria-label="Default select example">
+                                    <select class="form-control" id="producto" name="producto" aria-label="Default select example" required>
                                     </select>
                                 </div>
                             </div>
                             <div class="row pt-4">
                                 <div class="col-md-6">
                                     <span for="origen">Cuenta Destino</span>
-                                    <select class="form-control" id="cuenta_destino" name="cuenta_destino" aria-label="Default select example" >
+                                    <select class="form-control" id="cuenta_destino" name="cuenta_destino" aria-label="Default select example" required>
                                     </select>
                                     <input type="hidden" id="id_destino" name ="id_destino">
                                 </div>
